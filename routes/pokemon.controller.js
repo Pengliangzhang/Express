@@ -11,12 +11,12 @@ router.get('/', function(req, res, next) {
   res.send('successfully connection');
 });
 
-/* POST get pokemon list with search field and pagination. 
+/* GET get pokemon list with search field and pagination. 
   @Author BeckZ
   @Date May 8, 2021
 */
-router.post('/list', function(req, res, next) {
-  let resp = pokemonService.getPokemonList(req)
+router.get('/list', function(req, res, next) {
+  let resp = pokemonService.getPokemonList(req.query)
   if (resp) {
     response.success(res, "Success", resp)
   } else {

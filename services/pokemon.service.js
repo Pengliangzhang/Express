@@ -1,21 +1,21 @@
 var data = require('../public/util/pokedex.json');
-function getPokemonList(req) {
+function getPokemonList(body) {
   let dataList = []
   data.forEach(element => {
-    if (element.name.english.includes(req.body.keyWord) || element.name.japanese.includes(req.body.keyWord) || element.name.chinese.includes(req.body.keyWord) || element.name.french.includes(req.body.keyWord) ) {
+    if (element.name.english.includes(body.keyWord) || element.name.japanese.includes(body.keyWord) || element.name.chinese.includes(body.keyWord) || element.name.french.includes(body.keyWord) ) {
       dataList.push(element)
     }
   })
   let totalSize = dataList.length
-  let totalPages = Math.ceil(totalSize/req.body.pageSize)
-  let startPosition = (req.body.pageIndex - 1) * req.body.pageSize
-  let endPosition = req.body.pageIndex * req.body.pageSize
+  let totalPages = Math.ceil(totalSize/body.pageSize)
+  let startPosition = (body.pageIndex - 1) * body.pageSize
+  let endPosition = body.pageIndex * body.pageSize
   let respList = dataList.slice(startPosition, endPosition)
   let respData = {
     "totalSize": totalSize,
     "totalPages": totalPages,
-    "pageIndex": req.body.pageIndex,
-    "pageSize": req.body.pageSize,
+    "pageIndex": body.pageIndex,
+    "pageSize": body.pageSize,
     "data": respList
   }
   return respData
