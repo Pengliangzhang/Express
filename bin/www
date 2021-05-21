@@ -7,7 +7,6 @@
 var app = require('../app');
 var debug = require('debug')('react:server');
 var http = require('http');
-var ws = require('ws');
 
 /**
  * Get port from environment and store in Express.
@@ -23,25 +22,6 @@ app.set('port', port);
 var server = http.createServer(app);
 
 // create an WebSocket server
-const wsServer = new ws.Server({ server })
-wsServer.on('connection', (ws, request, client) => {
-  console.log(`new connection! ${ws}, request: ${request.headers}, client: ${client}`)
-  for (const key in request.headers) {
-    if (Object.hasOwnProperty.call(request.headers, key)) {
-      const element = request.headers[key];
-      console.log(key, element)
-    }
-  }
-  ws.on('message', (msg) => {
-    console.log(`Received message ${msg} from user ${client} request ${request.socket}`)
-    wsServer.clients.forEach((client) => {
-      if (client.readyState === ws.OPEN) {
-        client.send('收到啦 ！')
-      }
-    })
-  })
-  ws.send('send from ws server !')
-})
 
 /**
  * Listen on provided port, on all network interfaces.

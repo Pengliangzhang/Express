@@ -6,6 +6,7 @@ function getPokemonList(body) {
       dataList.push(element)
     }
   })
+  data.push()
   let totalSize = dataList.length
   let totalPages = Math.ceil(totalSize/body.pageSize)
   let startPosition = (body.pageIndex - 1) * body.pageSize
