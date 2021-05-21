@@ -12,7 +12,7 @@ wsServer.on('connection', (ws, request, client) => {
     let obj = {
       username: 'Beck',
       dateTime: new Date(),
-      msg: 'S2105ZB0038正在编辑'
+      msg: 'S2105ZB0038 is been editing'
     }
     setInterval(() => {
       ws.send(JSON.stringify(obj))
