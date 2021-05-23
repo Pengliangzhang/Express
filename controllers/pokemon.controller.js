@@ -7,7 +7,7 @@ var response = require('../public/util/response')
   @Author BeckZ
   @Date May 8, 2021
 */
-router.get('/', function(req, res, next) {
+router.get('/pokemon', function(req, res, next) {
   res.send('successfully connection');
 });
 

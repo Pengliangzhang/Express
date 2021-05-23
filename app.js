@@ -6,8 +6,9 @@ var logger = require('morgan');
 const ws = require('./services/ws.service');
 
 
-var indexRouter = require('./routes/index.controller');
-var pokemonRouter = require('./routes/pokemon.controller');
+var indexController = require('./controllers/index.controller');
+var pokemonController = require('./controllers/pokemon.controller');
+var wsController = require('./controllers/ws.controller');
 
 var app = express();
 
@@ -30,8 +31,9 @@ app.all('*', function(req, res, next) {
   next();
 })
 
-app.use('/', indexRouter);
-app.use('/pokemon', pokemonRouter);
+app.use('/', indexController);
+app.use('/pokemon', pokemonController);
+app.use('/message', wsController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

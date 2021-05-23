@@ -13,6 +13,8 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
+    "nodemon": "^2.0.7",
+    "simple-random-message": "^1.0.1",
     "ws": "^7.4.5"
   }
 }
