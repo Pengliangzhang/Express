@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const {generate, all} = require('simple-random-message');
 var response = require('../public/util/response')
+var { getMessageByUser } = require('./../services/ws.service')
 
 
 /* GET message index. 
@@ -17,8 +17,7 @@ router.get('/', function(req, res, next) {
   @Date May 22, 2021
 */
 router.get('/byuser', function(req, res, next) {
-  let message = generate('return')
-  response.success(res, 'Success', message)
+  response.success(res, 'Success', getMessageByUser())
 });
 
 module.exports = router;
